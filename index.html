@@ -1,0 +1,25 @@
+function calculate() {
+  // Get the input values and operator
+  var num1 = parseInt(document.getElementById("num1").value);
+  var num2 = parseInt(document.getElementById("num2").value);
+  var operator = document.getElementById("operator").value;
+
+  // Perform the calculation based on the selected operator
+  var result;
+  switch (operator) {
+    case "+":
+      result = num1 + num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "*":
+      result = num1 * num2;
+      break;
+    default:
+      result = "Invalid operator";
+  }
+
+  // Display the result
+  document.getElementById("result").innerHTML = result;
+}
