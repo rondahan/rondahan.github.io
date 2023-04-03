@@ -2,75 +2,6 @@
 <html>
 <head>
 	<title>Calculator</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			font-size: 18px;
-			background-color: #f5f5f5;
-			padding: 20px;
-		}
-		h1 {
-			text-align: center;
-			margin-bottom: 30px;
-		}
-		form {
-			background-color: #ffffff;
-			padding: 20px;
-			border-radius: 10px;
-			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-			width: 400px;
-			margin: 0 auto;
-		}
-		label {
-			display: block;
-			margin-bottom: 10px;
-			font-weight: bold;
-		}
-		input[type="number"] {
-			padding: 10px;
-			font-size: 18px;
-			border-radius: 5px;
-			border: none;
-			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-			margin-bottom: 20px;
-			width: 100%;
-		}
-		select {
-			padding: 10px;
-			font-size: 18px;
-			border-radius: 5px;
-			border: none;
-			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-			margin-bottom: 20px;
-			width: 100%;
-		}
-		button {
-			background-color: #4CAF50;
-			color: white;
-			padding: 10px 20px;
-			font-size: 18px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			margin-top: 20px;
-			width: 100%;
-		}
-		button:disabled {
-			background-color: #cccccc;
-			cursor: not-allowed;
-		}
-		#error {
-			color: red;
-			margin-top: 10px;
-			font-size: 14px;
-		}
-		#result {
-			font-size: 24px;
-			font-weight: bold;
-			margin-top: 20px;
-			text-align: center;
-		}
-	</style>
 	<script>
 		function calculate() {
 			// Get the input values and selected operator
@@ -78,29 +9,42 @@
 			var num2 = parseFloat(document.getElementById("num2").value);
 			var operator = document.getElementById("operator").value;
 
-			// Check if either input field is empty
-			if (isNaN(num1) || isNaN(num2)) {
-				document.getElementById("error").innerHTML = "Please enter both numbers";
-				document.getElementById("result").innerHTML = "";
-				document.getElementById("calculate").disabled = true;
-			} else {
-				// Calculate the result based on the selected operator
-				var result;
-				switch (operator) {
-					case "+":
-						result = num1 + num2;
-						break;
-					case "-":
-						result = num1 - num2;
-						break;
-					case "*":
-						result = num1 * num2;
-						break;
-				}
-
-				// Display the result on the page
-				document.getElementById("result").innerHTML = result;
-				document.getElementById("error").innerHTML = "";
-				document.getElementById("calculate").disabled = false;
+			// Calculate the result based on the selected operator
+			var result;
+			switch (operator) {
+				case "+":
+					result = num1 + num2;
+					break;
+				case "-":
+					result = num1 - num2;
+					break;
+				case "*":
+					result = num1 * num2;
+					break;
 			}
+
+			// Display the result on the page
+			document.getElementById("result").innerHTML = result;
 		}
+	</script>
+</head>
+<body>
+	<label for="num1">Number 1:</label>
+	<input type="number" id="num1"><br>
+
+	<label for="num2">Number 2:</label>
+	<input type="number" id="num2"><br>
+
+	<label for="operator">Operator:</label>
+	<select id="operator">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+	</select><br>
+
+	<button onclick="calculate()">=</button><br>
+
+	<label for="result">Result:</label>
+	<span id="result"></span>
+</body>
+</html>
